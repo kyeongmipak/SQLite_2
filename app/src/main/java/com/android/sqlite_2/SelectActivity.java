@@ -34,7 +34,6 @@ public class SelectActivity extends Activity {
 
 
 
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -110,12 +109,9 @@ public class SelectActivity extends Activity {
             cursor.close();
             studentInfo.close();
 
-            Toast.makeText(SelectActivity.this, "Select OK!", Toast.LENGTH_SHORT).show();
         } catch(Exception e){
             e.printStackTrace();
-            Toast.makeText(SelectActivity.this, "Select Error!", Toast.LENGTH_SHORT).show();
         }
-
     }
 
 

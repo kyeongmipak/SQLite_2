@@ -14,7 +14,10 @@
         android:layout_gravity="center_vertical"
         android:gravity="center"
         android:textColor="#999"
-        android:textSize="20dp"
+        android:textSize="50dp"
+        android:layout_weight="3"
+        android:typeface="monospace"
+        android:textStyle="bold"
         />
 
 
@@ -23,6 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="INSERT"
+        android:layout_weight=""
         />
 
     <Button
