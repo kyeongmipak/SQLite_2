@@ -32,124 +32,9 @@ public class SelectActivity extends Activity {
 
         searchAll();
 
-//        data = new ArrayList<StudentBean>();
-//        StudentInfo studentInfo;
-//        studentInfo = new StudentInfo(SelectActivity.this);
-//        try{                // 읽어올 때는 readable사용!
-//            DB = studentInfo.getReadableDatabase();
-//            // 차레대로 0, 1, 2 순서에 있음.
-//            String query = "SELECT * FROM student;";
-//
-//            Cursor cursor =  DB.rawQuery(query, null);
-//
-//            // String보다 퍼포먼스 빠른거!
-//            StringBuffer  stringBuffer = new StringBuffer();
-//
-//            // 데이터를 하나씩 읽으면서 이동해라!
-//            while (cursor.moveToNext()){
-//
-//                // 0, 1, 2에 맞게 불러와줘!
-//                int studentid = cursor.getInt(0);
-//                String studentname = cursor.getString(1);
-//                String studentmajor = cursor.getString(2);
-//                String studenttel = cursor.getString(3);
-//                Log.v(TAG, Integer.toString(studentid));
-//                // 불러온거를 stringBuffer에 담자!
-////                stringBuffer.append("studentid: " + studentid + "\nstudentname : " + studentname + "\nstudentmajor : " + studentmajor + "\nstudenttel : " + studenttel + "\n----------------------------------");
-//                data.add(new StudentBean(studentid, studentname, studentmajor, studenttel));
-//
-//            }
-//            adapter = new StudentAdapter(SelectActivity.this, R.layout.custom_layout, data);
-//            listView = findViewById(R.id.lv_student);
-//            listView.setAdapter(adapter);
-//            cursor.close();
-//            studentInfo.close();
-//
-//        } catch(Exception e){
-//            e.printStackTrace();
-//        }
-
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//
-//                Intent intent = new Intent(SelectActivity.this, UpdateActivity.class);
-//
-//                intent.putExtra("studentid", data.get(position).getStudentid());
-//                intent.putExtra("studentname", data.get(position).getStudentname());
-//                intent.putExtra("studentmajor", data.get(position).getStudentmajor());
-//                intent.putExtra("studenttel", data.get(position).getStudenttelno());
-//
-//                startActivity(intent);
-//            }
-//        });
-//
-//        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-//            @Override
-//            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent intent = new Intent(SelectActivity.this, DeleteActivity.class);
-//
-//                intent.putExtra("studentid", data.get(position).getStudentid());
-//                intent.putExtra("studentname", data.get(position).getStudentname());
-//                intent.putExtra("studentmajor", data.get(position).getStudentmajor());
-//                intent.putExtra("studenttel", data.get(position).getStudenttelno());
-//
-//                startActivity(intent);
-//                return true;
-//            }
-//        });
-    } // onCreate 끝 ----------------------------------------------------
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.v(TAG, "onResume()");
-//        onCreate(savedInstanceState);
-
-        searchAll();
 
 
 
-
-
-    } // onResume 끝 --------------------------------------------------------
-
-
-    public void searchAll(){
-        data = new ArrayList<StudentBean>();
-        StudentInfo studentInfo;
-        studentInfo = new StudentInfo(SelectActivity.this);
-        try{                // 읽어올 때는 readable사용!
-            DB = studentInfo.getReadableDatabase();
-            // 차레대로 0, 1, 2 순서에 있음.
-            String query = "SELECT * FROM student;";
-
-            Cursor cursor =  DB.rawQuery(query, null);
-
-            // String보다 퍼포먼스 빠른거!
-          //  StringBuffer  stringBuffer = new StringBuffer();
-
-            // 데이터를 하나씩 읽으면서 이동해라!
-            while (cursor.moveToNext()){
-                // 0, 1, 2에 맞게 불러와줘!
-                int studentid = cursor.getInt(0);
-                String studentname = cursor.getString(1);
-                String studentmajor = cursor.getString(2);
-                String studenttel = cursor.getString(3);
-
-                // 불러온거를 stringBuffer에 담자!
-                //stringBuffer.append("studentid: " + studentid + "\nstudentname : " + studentname + "\nstudentmajor : " + studentmajor + "\nstudenttel : " + studenttel + "\n----------------------------------");
-                data.add(new StudentBean(studentid, studentname, studentmajor, studenttel));
-            }
-            listView = findViewById(R.id.lv_student);
-            listView.setAdapter(adapter);
-            cursor.close();
-            studentInfo.close();
-
-        } catch(Exception e){
-            e.printStackTrace();
-        }
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -179,6 +64,58 @@ public class SelectActivity extends Activity {
                 return true;
             }
         });
+    } // onCreate 끝 ----------------------------------------------------
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        searchAll();
+
+    } // onResume 끝 --------------------------------------------------------
+
+
+
+
+    public void searchAll(){
+        data = new ArrayList<StudentBean>();
+        StudentInfo studentInfo;
+        studentInfo = new StudentInfo(SelectActivity.this);
+        try{                // 읽어올 때는 readable사용!
+            DB = studentInfo.getReadableDatabase();
+            // 차레대로 0, 1, 2 순서에 있음.
+            String query = "SELECT * FROM student;";
+
+            Cursor cursor =  DB.rawQuery(query, null);
+
+            // String보다 퍼포먼스 빠른거!
+          //  StringBuffer  stringBuffer = new StringBuffer();
+
+            // 데이터를 하나씩 읽으면서 이동해라!
+            while (cursor.moveToNext()){
+                // 0, 1, 2에 맞게 불러와줘!
+                int studentid = cursor.getInt(0);
+                String studentname = cursor.getString(1);
+                String studentmajor = cursor.getString(2);
+                String studenttel = cursor.getString(3);
+
+                // 불러온거를 stringBuffer에 담자!
+                //stringBuffer.append("studentid: " + studentid + "\nstudentname : " + studentname + "\nstudentmajor : " + studentmajor + "\nstudenttel : " + studenttel + "\n----------------------------------");
+                data.add(new StudentBean(studentid, studentname, studentmajor, studenttel));
+            }
+            adapter = new StudentAdapter(SelectActivity.this, R.layout.custom_layout, data);
+            listView = findViewById(R.id.lv_student);
+            listView.setAdapter(adapter);
+            cursor.close();
+            studentInfo.close();
+
+            Toast.makeText(SelectActivity.this, "Select OK!", Toast.LENGTH_SHORT).show();
+        } catch(Exception e){
+            e.printStackTrace();
+            Toast.makeText(SelectActivity.this, "Select Error!", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
 

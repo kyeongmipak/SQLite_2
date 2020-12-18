@@ -84,10 +84,10 @@ public class StudentAdapter extends BaseAdapter {
         // 만약 position이 홀수라면
         if(position % 2 == 1){
 
-            convertView.setBackgroundColor(0x5000FF00);
+            convertView.setBackgroundColor(0x50CCFFFF);
         } else {
 
-            convertView.setBackgroundColor(0x2000ff00);
+            convertView.setBackgroundColor(0x50CCCCFF);
         }
         return convertView;
     }

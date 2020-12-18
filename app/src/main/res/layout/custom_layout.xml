@@ -15,7 +15,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Student ID : "
+            android:text="ID : "
             />
         <TextView
             android:id="@+id/tv_studentid"
@@ -34,7 +34,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Student Name : "
+            android:text="Name : "
             />
         <TextView
             android:id="@+id/tv_studentname"
@@ -53,7 +53,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Student Major : "
+                android:text="Major : "
                 />
         <TextView
             android:id="@+id/tv_studentmajor"
@@ -73,7 +73,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Student TelNo : "
+                android:text="TelNo : "
                 />
             <TextView
                 android:id="@+id/tv_studenttel"
