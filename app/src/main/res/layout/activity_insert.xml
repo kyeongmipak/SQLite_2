@@ -46,6 +46,7 @@
         android:layout_weight="1"
         android:hint="전화번호를 입력하세요."
         android:gravity="bottom"
+        android:inputType="numberSigned"
         />
     <Button
         android:id="@+id/btn_insert"

@@ -32,7 +32,7 @@ public class DeleteActivity extends Activity {
         String studenttel = intent.getStringExtra("studenttel");
 
 
-        stid = findViewById(R.id.studentid_delete);
+
         stname = findViewById(R.id.studentname_delete);
         stmajor = findViewById(R.id.studemajor_delete);
         sttel = findViewById(R.id.studenttel_delete);
@@ -63,8 +63,6 @@ public class DeleteActivity extends Activity {
 
                                     studentInfo.close();
                                     Toast.makeText(DeleteActivity.this, "DELETE OK!", Toast.LENGTH_SHORT).show();
-//                                    Intent intent1 = new Intent(DeleteActivity.this, SelectActivity.class);
-//                                    startActivity(intent1);
                                     finish();
                                 } catch (Exception e) {
                                     e.printStackTrace();
