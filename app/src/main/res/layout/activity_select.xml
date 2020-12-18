@@ -14,10 +14,11 @@
         android:text="Select All"
         android:layout_weight="1"
         android:textSize="70px"
-        android:backgroundTint="#292626"
+        android:background="#858383"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:gravity="center"
+        android:typeface="monospace"
         />
 
     <ListView
