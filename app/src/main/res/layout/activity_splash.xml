@@ -19,7 +19,9 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:rotation="-90"
-            android:src="@drawable/air" />
+            android:src="@drawable/air"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="100dp"/>
 
 
 <!--        <ImageView-->
