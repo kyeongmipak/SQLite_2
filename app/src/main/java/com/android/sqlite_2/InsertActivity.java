@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 public class InsertActivity extends Activity {
     Button btn_Insert;
-    EditText studentname_isnert, studentmajor_isnert, studenttel_isnert;
+    EditText studentname_isnert, studentmajor_isnert, studenttel_insert;
     StudentInfo studentInfo;
 
     @Override
@@ -31,14 +31,14 @@ public class InsertActivity extends Activity {
                 SQLiteDatabase db;
                 studentname_isnert = findViewById(R.id.studentname_insert);
                 studentmajor_isnert = findViewById(R.id.studemajor_insert);
-                studenttel_isnert = findViewById(R.id.studenttel_insert);
+                studenttel_insert = findViewById(R.id.studenttel_insert);
                 String name = studentname_isnert.getText().toString();
                 String major = studentmajor_isnert.getText().toString();
-                String tel = studenttel_isnert.getText().toString();
+                String tel = studenttel_insert.getText().toString();
 
                 try {
                     db = studentInfo.getWritableDatabase();
-                    String query = "INSERT INTO member (username, userid, passwd) VALUES ('"+name+"', '"+major+"', "+tel+");";
+                    String query = "INSERT INTO member (studentname, studentmajor, studenttel) VALUES ('"+name+"', '"+major+"', "+tel+");";
                     db.execSQL(query);
 
                     studentInfo.close();
@@ -47,7 +47,7 @@ public class InsertActivity extends Activity {
                     startActivity(intent);
                 }catch (Exception e){
                     e.printStackTrace();
-                    Toast.makeText(InsertActivity.this,"Insert Erro!", Toast.LENGTH_SHORT).show();;
+                    Toast.makeText(InsertActivity.this,"Insert Error!", Toast.LENGTH_SHORT).show();;
                 }
             }
         });
