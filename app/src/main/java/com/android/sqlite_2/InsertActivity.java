@@ -3,6 +3,7 @@ package com.android.sqlite_2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -34,6 +35,7 @@ public class InsertActivity extends Activity {
                 String name = studentname_isnert.getText().toString();
                 String major = studentmajor_isnert.getText().toString();
                 String tel = studenttel_isnert.getText().toString();
+
                 try {
                     db = studentInfo.getWritableDatabase();
                     String query = "INSERT INTO member (username, userid, passwd) VALUES ('"+name+"', '"+major+"', "+tel+");";
@@ -41,7 +43,8 @@ public class InsertActivity extends Activity {
 
                     studentInfo.close();
                     Toast.makeText(InsertActivity.this,"Insert Ok!", Toast.LENGTH_SHORT).show();;
-
+                    Intent intent = new Intent(InsertActivity.this , SelectActivity.class);
+                    startActivity(intent);
                 }catch (Exception e){
                     e.printStackTrace();
                     Toast.makeText(InsertActivity.this,"Insert Erro!", Toast.LENGTH_SHORT).show();;
