@@ -38,7 +38,7 @@ public class InsertActivity extends Activity {
 
                 try {
                     db = studentInfo.getWritableDatabase();
-                    String query = "INSERT INTO member (studentname, studentmajor, studenttel) VALUES ('"+name+"', '"+major+"', "+tel+");";
+                    String query = "INSERT INTO student (studentname, studentmajor, studenttel) VALUES ('"+name+"', '"+major+"', "+tel+");";
                     db.execSQL(query);
 
                     studentInfo.close();
