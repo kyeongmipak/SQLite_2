@@ -63,8 +63,9 @@ public class DeleteActivity extends Activity {
 
                                     studentInfo.close();
                                     Toast.makeText(DeleteActivity.this, "DELETE OK!", Toast.LENGTH_SHORT).show();
-                                    Intent intent1 = new Intent(DeleteActivity.this, SelectActivity.class);
-                                    startActivity(intent1);
+//                                    Intent intent1 = new Intent(DeleteActivity.this, SelectActivity.class);
+//                                    startActivity(intent1);
+                                    finish();
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                     Toast.makeText(DeleteActivity.this, "DELETE Error", Toast.LENGTH_SHORT).show();

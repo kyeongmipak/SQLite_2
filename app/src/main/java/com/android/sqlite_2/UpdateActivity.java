@@ -42,7 +42,34 @@ public class UpdateActivity extends Activity {
         studentMajor.setText(major);
         studentTel.setText(tel);
 
-        findViewById(R.id.btnUpdate).setOnClickListener(onClickListener);
+        btnUpdate = findViewById(R.id.btnUpdate);
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            SQLiteDatabase DB;
+            @Override
+            public void onClick(View v) {
+                name = studentName.getText().toString();
+                major = studentMajor.getText().toString();
+                tel = studentTel.getText().toString();
+
+                try{
+                    DB = studentInfo.getWritableDatabase();
+
+                    String query = "UPDATE student SET studentname = '" + name + "', studentmajor = '" + major+ "', studenttel = '" + tel + "' WHERE studentid = " + Integer.toString(studentId)+ ";";
+                    DB.execSQL(query);
+
+                    studentInfo.close();
+                    Toast.makeText(UpdateActivity.this, "학생 정보가 수정되었습니다.", Toast.LENGTH_SHORT).show();
+
+                } catch (Exception e){
+                    e.printStackTrace();
+                    Toast.makeText(UpdateActivity.this, "오류가 발생하였습니다.", Toast.LENGTH_SHORT).show();
+                }
+
+//            Intent intent = new Intent(UpdateActivity.this, SelectActivity.class);
+//            startActivity(intent);
+                finish();
+            }
+        });
 
     }
 
@@ -60,9 +87,8 @@ public class UpdateActivity extends Activity {
             try{
                 DB = studentInfo.getWritableDatabase();
 
-                String query = "UPDATE student SET studentname = '" + name + "', studentmajor = '" + major;
-                String query1 = "', studenttel = '" + tel + "' WHERE studentid = " + Integer.toString(studentId) + ";";
-                DB.execSQL(query+query1);
+                String query = "UPDATE student SET studentname = '" + name + "', studentmajor = '" + major+ "', studenttel = '" + tel + "' WHERE studentid = " + Integer.toString(studentId)+ ";";
+                DB.execSQL(query);
 
                 studentInfo.close();
                 Toast.makeText(UpdateActivity.this, "학생 정보가 수정되었습니다.", Toast.LENGTH_SHORT).show();
@@ -72,8 +98,9 @@ public class UpdateActivity extends Activity {
                 Toast.makeText(UpdateActivity.this, "오류가 발생하였습니다.", Toast.LENGTH_SHORT).show();
             }
 
-            Intent intent = new Intent(UpdateActivity.this, SelectActivity.class);
-            startActivity(intent);
+//            Intent intent = new Intent(UpdateActivity.this, SelectActivity.class);
+//            startActivity(intent);
+            finish();
         }
     };
 }

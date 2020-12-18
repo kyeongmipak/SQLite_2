@@ -46,11 +46,11 @@ public class MainActivity extends Activity {
                     startActivity(intent);
                     break;
                 case R.id.btnUpdate:
-                    intent = new Intent(MainActivity.this, UpdateActivity.class);
+                    intent = new Intent(MainActivity.this, SelectActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.btnDelete:
-                    intent = new Intent(MainActivity.this, DeleteActivity.class);
+                    intent = new Intent(MainActivity.this, SelectActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.btnSelect:
