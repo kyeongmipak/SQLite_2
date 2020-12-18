@@ -14,7 +14,7 @@
         android:textSize="25dp"
         android:gravity="center"
         android:textStyle="bold"
-        android:layout_weight="10"
+        android:layout_weight="5"
         />
     <TextView
         android:layout_width="match_parent"
@@ -48,6 +48,7 @@
         android:gravity="bottom"
         />
     <Button
+        android:id="@+id/btn_insert"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
