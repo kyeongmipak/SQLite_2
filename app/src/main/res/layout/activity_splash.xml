@@ -2,13 +2,32 @@
 <LinearLayout
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center"
+    >
 
-
-    <ImageView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/jordy"
-        />
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        >
+
+        <ImageView
+            android:id="@+id/img2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:rotation="-90"
+            android:src="@drawable/air" />
+
+
+<!--        <ImageView-->
+<!--            android:id="@+id/img"-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:src="@drawable/kakao" />-->
+</LinearLayout>
+
 
 </LinearLayout>
