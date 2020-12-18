@@ -1,9 +1,63 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/deletelayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DeleteActivity">
+    android:orientation="vertical"
+    tools:context=".InsertActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:enabled="false"
+        android:gravity="center"
+        android:text="학생 정보 삭제"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/studentid_delete"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:enabled="false"
+        android:gravity="center_vertical" />
+
+    <EditText
+        android:id="@+id/studentname_delete"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:enabled="false"
+        android:gravity="bottom" />
+
+    <EditText
+        android:id="@+id/studemajor_delete"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:enabled="false"
+        android:gravity="bottom" />
+
+    <EditText
+        android:id="@+id/studenttel_delete"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:enabled="false"
+        android:gravity="bottom" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="삭제"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+
+</LinearLayout>
