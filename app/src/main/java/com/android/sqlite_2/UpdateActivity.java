@@ -3,6 +3,8 @@ package com.android.sqlite_2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -42,34 +44,9 @@ public class UpdateActivity extends Activity {
         studentMajor.setText(major);
         studentTel.setText(tel);
 
-        btnUpdate = findViewById(R.id.btnUpdate);
-        btnUpdate.setOnClickListener(new View.OnClickListener() {
-            SQLiteDatabase DB;
-            @Override
-            public void onClick(View v) {
-                name = studentName.getText().toString();
-                major = studentMajor.getText().toString();
-                tel = studentTel.getText().toString();
+        btnUpdate = findViewById(R.id.btnStudent_update);
 
-                try{
-                    DB = studentInfo.getWritableDatabase();
-
-                    String query = "UPDATE student SET studentname = '" + name + "', studentmajor = '" + major+ "', studenttel = '" + tel + "' WHERE studentid = " + Integer.toString(studentId)+ ";";
-                    DB.execSQL(query);
-
-                    studentInfo.close();
-                    Toast.makeText(UpdateActivity.this, "학생 정보가 수정되었습니다.", Toast.LENGTH_SHORT).show();
-
-                } catch (Exception e){
-                    e.printStackTrace();
-                    Toast.makeText(UpdateActivity.this, "오류가 발생하였습니다.", Toast.LENGTH_SHORT).show();
-                }
-
-//            Intent intent = new Intent(UpdateActivity.this, SelectActivity.class);
-//            startActivity(intent);
-                finish();
-            }
-        });
+        btnUpdate.setOnClickListener(onClickListener);
 
     }
 
@@ -80,27 +57,40 @@ public class UpdateActivity extends Activity {
         @Override
         public void onClick(View v) {
 
-            name = studentName.getText().toString();
-            major = studentMajor.getText().toString();
-            tel = studentTel.getText().toString();
+            new AlertDialog.Builder(UpdateActivity.this)
+                    .setTitle("알림")
+                    .setMessage("정보 수정을 하시겠습니까?")
+                    .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            name = studentName.getText().toString();
+                            major = studentMajor.getText().toString();
+                            tel = studentTel.getText().toString();
 
-            try{
-                DB = studentInfo.getWritableDatabase();
+                            try{
+                                DB = studentInfo.getWritableDatabase();
 
-                String query = "UPDATE student SET studentname = '" + name + "', studentmajor = '" + major+ "', studenttel = '" + tel + "' WHERE studentid = " + Integer.toString(studentId)+ ";";
-                DB.execSQL(query);
+                                String query = "UPDATE student SET studentname = '" + name + "', studentmajor = '" + major+ "', studenttel = '" + tel + "' WHERE studentid = " + studentId + ";";
+                                DB.execSQL(query);
 
-                studentInfo.close();
-                Toast.makeText(UpdateActivity.this, "학생 정보가 수정되었습니다.", Toast.LENGTH_SHORT).show();
+                                studentInfo.close();
+                                Toast.makeText(UpdateActivity.this, "학생 정보가 수정되었습니다.", Toast.LENGTH_SHORT).show();
 
-            } catch (Exception e){
-                e.printStackTrace();
-                Toast.makeText(UpdateActivity.this, "오류가 발생하였습니다.", Toast.LENGTH_SHORT).show();
-            }
+                            } catch (Exception e){
+                                e.printStackTrace();
+                                Toast.makeText(UpdateActivity.this, "오류가 발생하였습니다.", Toast.LENGTH_SHORT).show();
+                            }
 
-//            Intent intent = new Intent(UpdateActivity.this, SelectActivity.class);
-//            startActivity(intent);
-            finish();
+                            //           Intent intent = new Intent(UpdateActivity.this, SelectActivity.class);
+                            //           startActivity(intent);
+                            finish();
+
+                        }
+                    })
+                    .setNegativeButton("닫기", null)
+                    .setCancelable(true)
+                    .show();
+
         }
     };
 }
