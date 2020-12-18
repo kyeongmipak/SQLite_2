@@ -4,28 +4,30 @@ public class StudentBean {
 
     // field
     // custom_layout.xml에 있는 textView와 imageView 선언! (다 쓸거니까!)
-    private String studentid;
+    private int studentid;
     private String studentname;
     private String studentmajor;
     private String studenttelno;
 
 
     // constructor
-    public StudentBean(String studentid, String studentname, String studentmajor, String studenttelno) {
+
+    public StudentBean(int studentid, String studentname, String studentmajor, String studenttelno) {
         this.studentid = studentid;
         this.studentname = studentname;
         this.studentmajor = studentmajor;
         this.studenttelno = studenttelno;
     }
 
+
     // getter setter
 
 
-    public String getStudentid() {
+    public int getStudentid() {
         return studentid;
     }
 
-    public void setStudentid(String studentid) {
+    public void setStudentid(int studentid) {
         this.studentid = studentid;
     }
 

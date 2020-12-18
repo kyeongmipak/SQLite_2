@@ -75,7 +75,7 @@ public class StudentAdapter extends BaseAdapter {
         TextView tv_studenttel = convertView.findViewById(R.id.tv_studenttel);
 
         // textView와 ImageView 설정.
-        tv_studentid.setText(data.get(position).getStudentid() + " ");
+        tv_studentid.setText(Integer.toString(data.get(position).getStudentid()) + " ");
         tv_studentname.setText(data.get(position).getStudentname() + " ");
         tv_studentmajor.setText(data.get(position).getStudentmajor() + " ");
         tv_studenttel.setText(data.get(position).getStudenttelno() + " ");
