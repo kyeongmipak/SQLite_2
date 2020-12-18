@@ -32,7 +32,7 @@ public class DeleteActivity extends Activity {
         String studenttel = intent.getStringExtra("studenttel");
 
 
-        stid = findViewById(R.id.studentid_delete);
+
         stname = findViewById(R.id.studentname_delete);
         stmajor = findViewById(R.id.studemajor_delete);
         sttel = findViewById(R.id.studenttel_delete);
