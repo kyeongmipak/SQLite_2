@@ -9,12 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SQLite_2">
-        <activity android:name=".UpdateActivity"></activity>
-        <activity android:name=".DeleteActivity" />
-        <activity android:name=".InsertActivity" />
-        <activity android:name=".SelectActivity" />
-        <activity android:name=".SplashActivity" />
+
         <activity android:name=".MainActivity">
+
+        </activity>
+
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,6 +22,10 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".UpdateActivity"></activity>
+        <activity android:name=".DeleteActivity" />
+        <activity android:name=".InsertActivity" />
+        <activity android:name=".SelectActivity" />
     </application>
 
 </manifest>
