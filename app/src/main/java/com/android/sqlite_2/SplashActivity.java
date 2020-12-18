@@ -66,7 +66,7 @@ public class SplashActivity extends Activity {
                 startActivity(intent);
                 finish();
             }
-        },8000);
+        },3000);
     }
 
     @Override
