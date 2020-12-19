@@ -33,7 +33,6 @@ public class SelectActivity extends Activity {
         searchAll();
 
 
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
