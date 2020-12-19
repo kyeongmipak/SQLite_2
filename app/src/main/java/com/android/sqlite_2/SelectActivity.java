@@ -7,12 +7,17 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -23,15 +28,48 @@ public class SelectActivity extends Activity {
     private StudentAdapter adapter = null;
     private ListView listView = null;
     private SQLiteDatabase DB;
-    Button btnMain;
+    Button btnMain, search_Btn;
+    ArrayAdapter<CharSequence> spinenerAdapter = null;
+    private ArrayList<StudentBean> searchArr = null;
+    Spinner spinner = null;
+    EditText search_ET;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select);
-        Log.v(TAG, "onCreate()");
+
+        spinenerAdapter = ArrayAdapter.createFromResource(this, R.array.searchSpinner, android.R.layout.simple_spinner_item);
+        spinenerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner = findViewById(R.id.search_spiner);
+        spinner.setAdapter(spinenerAdapter);
 
         searchAll();
+
+        searchArr = new ArrayList<StudentBean>();
+        searchArr.addAll(data);
+        search_ET = findViewById(R.id.search_ET);
+        search_ET.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String text = search_ET.getText().toString();
+                spinner = findViewById(R.id.search_spiner);
+                String searchKind = spinner.getSelectedItem().toString();
+                search(text, searchKind);
+            }
+        });
+
 
         findViewById(R.id.btnMain).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,6 +157,47 @@ public class SelectActivity extends Activity {
         } catch(Exception e){
             e.printStackTrace();
         }
+    }
+
+    public void search(String charText, String searchKind) {
+        data.clear();
+        if (charText.length() == 0) {
+            data.addAll(searchArr);
+        }
+        else {
+            switch (searchKind){
+                case "학번":
+                    for (int i = 0; i < searchArr.size(); i++) {
+                        if (Integer.toString(searchArr.get(i).getStudentid()).contains(charText)) {
+                            data.add(searchArr.get(i));
+                        }
+                    }
+                    break;
+                case "이름":
+                    for (int i = 0; i < searchArr.size(); i++) {
+                        if (searchArr.get(i).getStudentname().contains(charText)) {
+                            data.add(searchArr.get(i));
+                        }
+                    }
+                    break;
+                case "전공":
+                    for (int i = 0; i < searchArr.size(); i++) {
+                        if (searchArr.get(i).getStudentmajor().contains(charText)) {
+                            data.add(searchArr.get(i));
+                        }
+                    }
+                    break;
+                case "전화번호":
+                    for (int i = 0; i < searchArr.size(); i++) {
+                        if (searchArr.get(i).getStudenttelno().contains(charText)) {
+                            data.add(searchArr.get(i));
+                        }
+                    }
+                    break;
+            }
+
+        }
+        adapter.notifyDataSetChanged();
     }
 
 
