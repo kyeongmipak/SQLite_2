@@ -36,20 +36,26 @@ public class InsertActivity extends Activity {
                 String major = studentmajor_isnert.getText().toString();
                 String tel = studenttel_insert.getText().toString();
 
-                try {
-                    db = studentInfo.getWritableDatabase();
-                    String query = "INSERT INTO student (studentname, studentmajor, studenttel) VALUES ('"+name+"', '"+major+"', "+tel+");";
-                    db.execSQL(query);
+                if(name.length()==0|major.length()==0|tel.length()==0){
+                    Toast.makeText(InsertActivity.this,"모든 정보를 입력해주세요.", Toast.LENGTH_SHORT).show();
+                }else {
+                    try {
+                        db = studentInfo.getWritableDatabase();
+                        String query = "INSERT INTO student (studentname, studentmajor, studenttel) VALUES ('"+name+"', '"+major+"', "+tel+");";
+                        db.execSQL(query);
 
-                    studentInfo.close();
-                    Toast.makeText(InsertActivity.this,"Insert Ok!", Toast.LENGTH_SHORT).show();;
-                    Intent intent = new Intent(InsertActivity.this , SelectActivity.class);
-                    startActivity(intent);
-                    finish();
-                }catch (Exception e){
-                    e.printStackTrace();
-                    Toast.makeText(InsertActivity.this,"Insert Error!", Toast.LENGTH_SHORT).show();;
+                        studentInfo.close();
+                        Toast.makeText(InsertActivity.this,"Insert Ok!", Toast.LENGTH_SHORT).show();;
+                        Intent intent = new Intent(InsertActivity.this , SelectActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }catch (Exception e){
+                        e.printStackTrace();
+                        Toast.makeText(InsertActivity.this,"Insert Error!", Toast.LENGTH_SHORT).show();;
+                    }
                 }
+
+
             }
         });
     }
