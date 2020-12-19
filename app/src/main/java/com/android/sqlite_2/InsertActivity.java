@@ -3,6 +3,8 @@ package com.android.sqlite_2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -39,20 +41,39 @@ public class InsertActivity extends Activity {
                 if(name.length()==0|major.length()==0|tel.length()==0){
                     Toast.makeText(InsertActivity.this,"모든 정보를 입력해주세요.", Toast.LENGTH_SHORT).show();
                 }else {
-                    try {
-                        db = studentInfo.getWritableDatabase();
-                        String query = "INSERT INTO student (studentname, studentmajor, studenttel) VALUES ('"+name+"', '"+major+"', "+tel+");";
-                        db.execSQL(query);
+                    new AlertDialog.Builder(InsertActivity.this)
+                            .setTitle("입력을 완료하시겠습니까?")
+                            .setPositiveButton("확인", new DialogInterface.OnClickListener() {
 
-                        studentInfo.close();
-                        Toast.makeText(InsertActivity.this,"Insert Ok!", Toast.LENGTH_SHORT).show();;
-                        Intent intent = new Intent(InsertActivity.this , SelectActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }catch (Exception e){
-                        e.printStackTrace();
-                        Toast.makeText(InsertActivity.this,"Insert Error!", Toast.LENGTH_SHORT).show();;
-                    }
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    SQLiteDatabase db;
+                                    studentname_isnert = findViewById(R.id.studentname_insert);
+                                    studentmajor_isnert = findViewById(R.id.studemajor_insert);
+                                    studenttel_insert = findViewById(R.id.studenttel_insert);
+                                    String name = studentname_isnert.getText().toString();
+                                    String major = studentmajor_isnert.getText().toString();
+                                    String tel = studenttel_insert.getText().toString();
+                                    try {
+                                        db = studentInfo.getWritableDatabase();
+                                        String query = "INSERT INTO student (studentname, studentmajor, studenttel) VALUES ('"+name+"', '"+major+"', "+tel+");";
+                                        db.execSQL(query);
+
+                                        studentInfo.close();
+                                        Toast.makeText(InsertActivity.this,"입력 완료!", Toast.LENGTH_SHORT).show();;
+                                        Intent intent = new Intent(InsertActivity.this , SelectActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }catch (Exception e){
+                                        e.printStackTrace();
+                                        Toast.makeText(InsertActivity.this,"입력 실패!", Toast.LENGTH_SHORT).show();;
+                                    }
+
+                                }
+                            })
+                            .setNegativeButton("취소", null)
+                            .setCancelable(true)
+                            .show();
                 }
 
 
