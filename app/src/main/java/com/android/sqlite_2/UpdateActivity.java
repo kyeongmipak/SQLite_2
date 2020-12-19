@@ -72,6 +72,8 @@ public class UpdateActivity extends Activity {
 
                             if(name.length()==0|major.length()==0|tel.length()==0){
                                 Toast.makeText(UpdateActivity.this,"모든 정보를 입력해주세요.", Toast.LENGTH_SHORT).show();
+                            } else if (tel.length() != 11){
+                                Toast.makeText(UpdateActivity.this,"양식에 맞는 전화번호를 입력해주세요.", Toast.LENGTH_SHORT).show();
                             } else{
                                 try{
                                     DB = studentInfo.getWritableDatabase();
