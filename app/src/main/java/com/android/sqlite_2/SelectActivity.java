@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -28,11 +29,11 @@ public class SelectActivity extends Activity {
     private StudentAdapter adapter = null;
     private ListView listView = null;
     private SQLiteDatabase DB;
-    Button btnMain, search_Btn;
+    Button btnMain;
     ArrayAdapter<CharSequence> spinenerAdapter = null;
     private ArrayList<StudentBean> searchArr = null;
     Spinner spinner = null;
-    EditText search_ET;
+    EditText search_EdT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +46,12 @@ public class SelectActivity extends Activity {
         spinner = findViewById(R.id.search_spiner);
         spinner.setAdapter(spinenerAdapter);
 
+        search_EdT = findViewById(R.id.search_ET);
         searchAll();
 
         searchArr = new ArrayList<StudentBean>();
         searchArr.addAll(data);
-        search_ET = findViewById(R.id.search_ET);
-        search_ET.addTextChangedListener(new TextWatcher() {
+        search_EdT.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -63,7 +64,7 @@ public class SelectActivity extends Activity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                String text = search_ET.getText().toString();
+                String text = search_EdT.getText().toString();
                 spinner = findViewById(R.id.search_spiner);
                 String searchKind = spinner.getSelectedItem().toString();
                 search(text, searchKind);
@@ -199,6 +200,5 @@ public class SelectActivity extends Activity {
         }
         adapter.notifyDataSetChanged();
     }
-
 
 } // end ---------------------------------------------------------------
