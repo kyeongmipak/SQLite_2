@@ -25,6 +25,7 @@
         android:hint="이름을 입력하세요."
         android:gravity="bottom"
         android:singleLine="true"
+        android:imeOptions="actionNext"
         />
 
     <EditText
@@ -35,6 +36,7 @@
         android:hint="전공을 입력하세요."
         android:gravity="bottom"
         android:singleLine="true"
+        android:imeOptions="actionNext"
         />
 
     <EditText
@@ -42,10 +44,11 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:hint="전화번호를 입력하세요."
+        android:hint="전화번호를 입력하세요. ex)01012345678"
         android:gravity="bottom"
         android:singleLine="true"
         android:inputType="numberSigned"
+        android:imeOptions="actionDone"
         />
 
     <Button

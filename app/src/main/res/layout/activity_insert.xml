@@ -31,6 +31,9 @@
         android:hint="이름을 입력하세요."
         android:gravity="bottom"
         android:singleLine="true"
+        android:inputType="text"
+        android:lines="1"
+        android:imeOptions="actionNext"
         />
     <EditText
         android:id="@+id/studemajor_insert"
@@ -40,16 +43,21 @@
         android:hint="전공을 입력하세요."
         android:gravity="bottom"
         android:singleLine="true"
+        android:inputType="text"
+        android:lines="1"
+        android:imeOptions="actionNext"
         />
     <EditText
         android:id="@+id/studenttel_insert"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:hint="전화번호를 입력하세요."
+        android:hint="전화번호를 입력하세요. ex)01012345678"
         android:gravity="bottom"
-        android:inputType="numberSigned"
+        android:inputType="number"
         android:singleLine="true"
+        android:lines="1"
+        android:imeOptions="actionDone"
         />
     <Button
         android:id="@+id/btn_insert"

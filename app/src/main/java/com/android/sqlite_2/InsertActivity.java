@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -20,7 +21,6 @@ public class InsertActivity extends Activity {
     Button btn_Insert;
     EditText studentname_isnert, studentmajor_isnert, studenttel_insert;
     StudentInfo studentInfo;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +43,9 @@ public class InsertActivity extends Activity {
 
                 if(name.length()==0|major.length()==0|tel.length()==0){
                     Toast.makeText(InsertActivity.this,"모든 정보를 입력해주세요.", Toast.LENGTH_SHORT).show();
-                }else {
+                }else if (tel.length() != 11){
+                    Toast.makeText(InsertActivity.this,"양식에 맞는 전화번호를 입력해주세요.", Toast.LENGTH_SHORT).show();
+                } else {
                     new AlertDialog.Builder(InsertActivity.this)
                             .setTitle("입력을 완료하시겠습니까?")
                             .setPositiveButton("확인", new DialogInterface.OnClickListener() {
