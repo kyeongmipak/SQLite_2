@@ -45,6 +45,7 @@ public class InsertActivity extends Activity {
                     Toast.makeText(InsertActivity.this,"Insert Ok!", Toast.LENGTH_SHORT).show();;
                     Intent intent = new Intent(InsertActivity.this , SelectActivity.class);
                     startActivity(intent);
+                    finish();
                 }catch (Exception e){
                     e.printStackTrace();
                     Toast.makeText(InsertActivity.this,"Insert Error!", Toast.LENGTH_SHORT).show();;

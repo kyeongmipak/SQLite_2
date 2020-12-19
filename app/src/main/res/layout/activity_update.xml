@@ -14,7 +14,7 @@
         android:textSize="25dp"
         android:gravity="center"
         android:textStyle="bold"
-        android:layout_weight="10"
+        android:layout_weight="6"
         />
 
     <EditText
@@ -24,6 +24,7 @@
         android:layout_weight="1"
         android:hint="이름을 입력하세요."
         android:gravity="bottom"
+        android:singleLine="true"
         />
 
     <EditText
@@ -33,6 +34,7 @@
         android:layout_weight="1"
         android:hint="전공을 입력하세요."
         android:gravity="bottom"
+        android:singleLine="true"
         />
 
     <EditText
@@ -42,6 +44,7 @@
         android:layout_weight="1"
         android:hint="전화번호를 입력하세요."
         android:gravity="bottom"
+        android:singleLine="true"
         android:inputType="numberSigned"
         />
 

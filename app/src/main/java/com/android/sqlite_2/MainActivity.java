@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -47,10 +48,12 @@ public class MainActivity extends Activity {
                     break;
                 case R.id.btnUpdate:
                     intent = new Intent(MainActivity.this, SelectActivity.class);
+                    Toast.makeText(MainActivity.this, "수정하고싶은 학생을 짧게 터치해주세요.", Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                     break;
                 case R.id.btnDelete:
                     intent = new Intent(MainActivity.this, SelectActivity.class);
+                    Toast.makeText(MainActivity.this, "삭제하고싶은 학생을 길게 터치해주세요.", Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                     break;
                 case R.id.btnSelect:
