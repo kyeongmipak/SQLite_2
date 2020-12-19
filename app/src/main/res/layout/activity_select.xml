@@ -28,7 +28,11 @@
         android:layout_weight="9"
         />
 
-
-
+    <Button
+        android:id="@+id/btnMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Go to Main"
+        />
 
 </LinearLayout>

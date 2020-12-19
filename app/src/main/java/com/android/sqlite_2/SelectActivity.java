@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,7 +23,7 @@ public class SelectActivity extends Activity {
     private StudentAdapter adapter = null;
     private ListView listView = null;
     private SQLiteDatabase DB;
-    Bundle savedInstanceState;
+    Button btnMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,13 @@ public class SelectActivity extends Activity {
 
         searchAll();
 
+        findViewById(R.id.btnMain).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SelectActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
