@@ -67,23 +67,29 @@ public class UpdateActivity extends Activity {
                             major = studentMajor.getText().toString();
                             tel = studentTel.getText().toString();
 
-                            try{
-                                DB = studentInfo.getWritableDatabase();
+                            if(name.length()==0|major.length()==0|tel.length()==0){
+                                Toast.makeText(UpdateActivity.this,"모든 정보를 입력해주세요.", Toast.LENGTH_SHORT).show();
+                            } else{
+                                try{
+                                    DB = studentInfo.getWritableDatabase();
 
-                                String query = "UPDATE student SET studentname = '" + name + "', studentmajor = '" + major+ "', studenttel = '" + tel + "' WHERE studentid = " + studentId + ";";
-                                DB.execSQL(query);
+                                    String query = "UPDATE student SET studentname = '" + name + "', studentmajor = '" + major+ "', studenttel = '" + tel + "' WHERE studentid = " + studentId + ";";
+                                    DB.execSQL(query);
 
-                                studentInfo.close();
-                                Toast.makeText(UpdateActivity.this, "학생 정보가 수정되었습니다.", Toast.LENGTH_SHORT).show();
+                                    studentInfo.close();
+                                    Toast.makeText(UpdateActivity.this, "학생 정보가 수정되었습니다.", Toast.LENGTH_SHORT).show();
 
-                            } catch (Exception e){
-                                e.printStackTrace();
-                                Toast.makeText(UpdateActivity.this, "오류가 발생하였습니다.", Toast.LENGTH_SHORT).show();
+                                } catch (Exception e){
+                                    e.printStackTrace();
+                                    Toast.makeText(UpdateActivity.this, "오류가 발생하였습니다.", Toast.LENGTH_SHORT).show();
+                                }
+
+                                //           Intent intent = new Intent(UpdateActivity.this, SelectActivity.class);
+                                //           startActivity(intent);
+                                finish();
+
                             }
 
-                            //           Intent intent = new Intent(UpdateActivity.this, SelectActivity.class);
-                            //           startActivity(intent);
-                            finish();
 
                         }
                     })
