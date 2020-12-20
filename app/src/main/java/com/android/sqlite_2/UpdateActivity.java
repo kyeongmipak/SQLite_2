@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -59,6 +60,11 @@ public class UpdateActivity extends Activity {
 
         @Override
         public void onClick(View v) {
+
+            name = studentName.getText().toString();
+            major = studentMajor.getText().toString();
+            tel = studentTel.getText().toString();
+
 
             new AlertDialog.Builder(UpdateActivity.this)
                     .setTitle("알림")

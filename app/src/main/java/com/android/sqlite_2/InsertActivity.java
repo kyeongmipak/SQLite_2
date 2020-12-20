@@ -61,7 +61,7 @@ public class InsertActivity extends Activity {
                                     String tel = studenttel_insert.getText().toString();
                                     try {
                                         db = studentInfo.getWritableDatabase();
-                                        String query = "INSERT INTO student (studentname, studentmajor, studenttel) VALUES ('"+name+"', '"+major+"', "+tel+");";
+                                        String query = "INSERT INTO student (studentname, studentmajor, studenttel) VALUES ('"+name+"', '"+major+"', '"+tel+"');";
                                         db.execSQL(query);
 
                                         studentInfo.close();
