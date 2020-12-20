@@ -142,7 +142,7 @@ public class SelectActivity extends Activity {
                 int studentid = cursor.getInt(0);
                 String studentname = cursor.getString(1);
                 String studentmajor = cursor.getString(2);
-                String studenttel = "0"+cursor.getString(3);
+                String studenttel = cursor.getString(3);
 
                 // 불러온거를 stringBuffer에 담자!
                 //stringBuffer.append("studentid: " + studentid + "\nstudentname : " + studentname + "\nstudentmajor : " + studentmajor + "\nstudenttel : " + studenttel + "\n----------------------------------");
